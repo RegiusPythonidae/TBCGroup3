@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="2000">
+                <img src="https://alta.ge/images/promo/308/ge_Alta_MS365_1280x800.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" data-bs-interval="2000">
+                <img src="https://alta.ge/images/promo/307/iphone15pro_price_web_mob_ge.png" class="d-block w-100"
+                     alt="...">
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-2">
+        <div class="col">
+            <div class="card mb-3" style="max-width: 700px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="https://alta.ge/images/promo/264/Tab_290x265_wka3-2f.png"
+                             class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">An item</li>
+                            <li class="list-group-item">A second item</li>
+                            <li class="list-group-item">A third item</li>
+                            <li class="list-group-item">A Fourth item</li>
+                            <li class="list-group-item">A Fifth item</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card mb-3" style="max-width: 700px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="https://alta.ge/images/promo/264/Tab_290x265_wka3-2f.png"
+                             class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">An item</li>
+                            <li class="list-group-item">A second item</li>
+                            <li class="list-group-item">A third item</li>
+                            <li class="list-group-item">A Fourth item</li>
+                            <li class="list-group-item">A Fifth item</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1">
+        {% for product in products %}
+            <div class="col">
+                <div class="card">
+                    <div class="embed-responsive embed-responsive-4by3" style="height: 30vh">
+                        <img src="/static/{{ product.img }}" class="card-img-top embed-responsive-item"
+                             alt="..." style="height: 100%; width: 100%">
+                    </div>
+                    <div class="card-body">
+                        <p class="card-title">{{ product.name }}</p>
+                        <h3 class="card-text">{{ product.price }}<sup>₾</sup></h3>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <a href="/view_product/{{ product.id }}" class="btn btn-warning">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                     class="bi bi-cart-fill" viewBox="0 0 16 16">
+                                    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                                </svg>
+                                კალათაში
+                            </a>
+                        </li>
+                        {% if current_user.role == "admin" %}
+                            <li class="list-group-item">
+                                <a href="/edit_product/{{ product.id }}" class="btn btn-outline-success">
+                                    რედაქტირება
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="/delete_product/{{ product.id }}" class="btn btn-danger">
+                                    წაშლა
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

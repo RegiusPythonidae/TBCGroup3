@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container text-center">
+    <img src="/static/{{ product.img }}" style="width: 50%">
+    <table class="table">
+        <tr>
+            <th>სახელი</th>
+            <td>{{ product.name }}</td>
+        </tr>
+        <tr>
+            <th>ფასი</th>
+            <td>{{ product.price }}</td>
+        </tr>
+    </table>
+</div>
+{% endblock %}

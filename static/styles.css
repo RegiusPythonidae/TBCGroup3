@@ -1,0 +1,40 @@
+div {
+    color: #ab48f7;
+    background-color: cornsilk;
+    border: black 4px solid;
+    border-radius: 6px;
+    font-size: 24px;
+    font-weight: bold;
+    word-spacing: 10px;
+    line-height: 20px;
+}
+
+.btn {
+    border: none;
+    border-radius: 12px;
+    color: white;
+    padding: 24px 48px;
+    margin-top: 20px;
+    margin-left: 50px;
+    transition-duration: 0.3s;
+}
+
+.blue-btn {
+    background-color: #107ce7;
+}
+
+.blue-btn:hover {
+    background-color: #6aafef;
+}
+
+.blue-btn:active {
+    background-color: #09559a;
+}
+
+.red-btn {
+    background-color: #e71037;
+}
+
+fieldset {
+    width: 50%;
+}
